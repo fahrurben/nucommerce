@@ -1,9 +1,12 @@
 from django.db import models
 
-class Category(models.Model):
+
+class Product(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(null=False, unique=True)
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.RESTRICT)
+    description = models.TextField()
+    thumbnail = models.CharField(max_length=1000)
 
     def __str__(self):
         return self.name
+
