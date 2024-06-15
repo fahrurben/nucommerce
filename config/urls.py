@@ -23,10 +23,11 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from nucommerce.views import CategoryView
+from nucommerce.views import CategoryView, ProductView
 
 router = routers.SimpleRouter()
 router.register(r'categories', CategoryView)
+router.register(r'products', ProductView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

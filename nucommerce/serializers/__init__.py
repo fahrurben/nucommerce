@@ -1,2 +1,3 @@
 from .category_serializer import CategorySerializer
 from .CustomTokenObtainPairSerializer import CustomTokenObtainPairSerializer
+from .product_serializer import ProductSerializer
