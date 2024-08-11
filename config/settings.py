@@ -136,8 +136,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'nucommerce.common.CustomPagination',
     'PAGE_SIZE': 5,
+    'COERCE_DECIMAL_TO_STRING': False,
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
