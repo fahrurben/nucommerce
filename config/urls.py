@@ -17,22 +17,28 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from django.conf.urls.static import static
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 
-from nucommerce.views import CategoryView, ProductView
+from config import settings
+from nucommerce.views import CategoryView, ProductView, ImageUploadView
 
 router = routers.SimpleRouter()
 router.register(r'categories', CategoryView)
-router.register(r'products', ProductView)
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/media_upload/', ImageUploadView.as_view(), name='media_upload'),
 
     path('api/', include(router.urls)),
 ]
+router.register(r'products', ProductView)
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
