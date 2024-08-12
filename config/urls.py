@@ -29,6 +29,7 @@ from nucommerce.views import CategoryView, ProductView, ImageUploadView
 
 router = routers.SimpleRouter()
 router.register(r'categories', CategoryView)
+router.register(r'products', ProductView)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -37,7 +38,6 @@ urlpatterns = [
 
     path('api/', include(router.urls)),
 ]
-router.register(r'products', ProductView)
 
 
 if settings.DEBUG:
